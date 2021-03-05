@@ -12,10 +12,11 @@ import java.util.Map;
 @TeleOp(name = "Interpreted Auto")
 public class InterpretedAuto extends LinearOpMode {
 
-    private final UnderscoreHardwareMap hm = new UnderscoreHardwareMap(hardwareMap);
+    private UnderscoreHardwareMap hm;
 
     @Override
     public void runOpMode() {
+        hm = new UnderscoreHardwareMap(hardwareMap);
         runText(
                 "drive:  2.5\n" +
                         "turn:   90\n" +
@@ -75,12 +76,11 @@ public class InterpretedAuto extends LinearOpMode {
         DRIVE,
         TURN;
 
-        public static final Map<String, CommandType> commandNames = new HashMap<String, CommandType>();
+        public static final Map<String, CommandType> commandNames = new HashMap<>();
 
         static {
             commandNames.put("drive", CommandType.DRIVE);
             commandNames.put("turn", CommandType.TURN);
-
         }
     }
 }
