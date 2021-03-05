@@ -66,7 +66,7 @@ public class InterpretedAuto extends LinearOpMode {
                     hm.driveFeet(Math.abs(args[0]), args[0] > 0 ? 1.0 : -1.0);
                     break;
                 case TURN:
-                    hm.turnRight(Math.abs(args[0]), args[0] > 0 ? 1.0 : -1.0);
+                    hm.turnRight(Math.abs(args[0]), args[0] > 0 ? -1.0 : 1.0);
                     break;
             }
         }
