@@ -42,7 +42,7 @@ public class InterpretedAuto extends LinearOpMode {
         }
         double[] values = new double[argStrings.size()];
         for (int i = 0; i < argStrings.size(); i++) {
-            values[i] = Integer.parseInt(argStrings.get(i));
+            values[i] = Double.parseDouble(argStrings.get(i));
         }
 
         String commandName = nameSplit[0];
