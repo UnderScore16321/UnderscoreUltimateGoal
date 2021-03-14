@@ -2,28 +2,22 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
 import org.firstinspires.ftc.teamcode.HardwareMap.UnderscoreHardwareMap;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
-import java.net.NetworkInterface;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
 
-@TeleOp(name = "Interpreted Auto Server 2")
-public class InterpretedAuto extends LinearOpMode {
+@TeleOp(name = "Interpreted Auto lOCAL")
+public class InterpretedAutoLocal extends LinearOpMode {
 
     private UnderscoreHardwareMap hm;
 
@@ -101,27 +95,17 @@ public class InterpretedAuto extends LinearOpMode {
     class Server {
 
         Server() throws IOException {
-            ServerSocket serverSocket = new ServerSocket(port, 0, InetAddress.getByName(ip));
-            Socket clientSocket = serverSocket.accept();
-            BufferedReader clientOutput = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+//            ServerSocket serverSocket = new ServerSocket(port, 0, InetAddress.getByName(ip));
+//            Socket clientSocket = serverSocket.accept();
+//            BufferedReader clientOutput = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
-//            new Runnable() {
-//                @Override
-//                public void run() {
-//                    while (running) {
-//                        if (executing && commandBuffer.size() != 0) {
-//                            commandBuffer.get(0).run(hm);
-//                            commandBuffer.remove(0);
-//                        } else {
-//                            sleep(10);
-//                        }
-//
-//                    }
-//                }
-//            }.run();
+            String[] lines = {
+                    "DRIVE:-9.3",
+            };
 
-            while(true) {
-                String line = clientOutput.readLine();
+            int i = 0;
+            while(i < lines.length) {
+                String line = lines[i++];
                 telemetry.addLine(line);
                 telemetry.update();
                 if(line.equals("exit")) {
@@ -141,7 +125,6 @@ public class InterpretedAuto extends LinearOpMode {
                 }
             }
 
-            serverSocket.close();
             running = false;
         }
     }

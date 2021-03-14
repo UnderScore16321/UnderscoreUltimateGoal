@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.HardwareMap;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import static android.os.SystemClock.sleep;
 
@@ -15,6 +16,8 @@ public class UnderscoreHardwareMap {
     final DcMotor leftBack;
     final DcMotor rightFront;
     final DcMotor leftFront;
+    final DcMotor wobbleGoal;
+    final Servo   wobbleGoalGripper;
 
     public UnderscoreHardwareMap(HardwareMap hwM) {
         rightBack = hwM.dcMotor.get("BackRight");
@@ -23,6 +26,9 @@ public class UnderscoreHardwareMap {
         rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
         leftBack = hwM.dcMotor.get("BackLeft");
         leftFront = hwM.dcMotor.get("FrontLeft");
+
+        wobbleGoal = hwM.dcMotor.get("WobbleGoal");
+        wobbleGoalGripper = hwM.servo.get("WobbleGoalGrabber");
     }
 
     public void driveFeet(double feet, double power) {
